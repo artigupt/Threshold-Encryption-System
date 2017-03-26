@@ -1,0 +1,53 @@
+'''ttk_button_label1.py
+a look at foreground/background colors
+'''
+
+try:
+    # Python27
+    import Tkinter as tk
+    import ttk
+except ImportError:
+    # Python31+
+    import tkinter as tk
+    import tkinter.ttk as ttk
+    from tkinter import filedialog
+    from tkinter.filedialog import askopenfilename 
+    
+
+root = tk.Tk()
+
+# typical tk button
+#tk_btn = tk.Button(text="Encryption", bg='blue', fg='red')
+#tk_btn.pack(pady=10)
+def callback():
+    name= askopenfilename() 
+    print (name)
+
+
+style = ttk.Style()
+style.configure("GB.TLabel", foreground="red", background="black", font=('calibri', 30, 'underline', 'bold'))
+ttk_label = ttk.Label(text="Threshold Cryptography System",width=30, style="GB.TLabel")
+ttk_label.pack(padx=50, pady=50, side='top')
+
+
+ttk.Style().configure("C.TButton", height = 40, foreground="blue", background='grey', font=('ARIAL', 20, 'italic', 'bold'))
+ttk_btn = ttk.Button(text="Encryption", width=20,  style="C.TButton", command=callback)
+ttk_btn.pack(padx=30, pady=30)
+#ttk.v = StringVar()
+#ttk.e = ttk.Entry(root, textvariable=bv)
+
+ttk.Style().configure("K.TButton", height = 40, foreground="maroon2", background='grey', font=('ARIAL', 20, 'italic', 'bold'))
+ttk_btn = ttk.Button(text="Encryption is Done!!!", width=50,  style="K.TButton", command=callback)
+ttk_btn.pack(padx=30, pady=30)
+
+ttk.Style().configure("TButton", foreground="blue", background='#ccc', font=('ARIAL', 20, 'italic', 'bold'))
+ttk_btn = ttk.Button(text="Decryption", width=20, style="TButton", command=callback)
+ttk_btn.pack(padx=30, pady=30)
+
+
+ttk.Style().configure("RB.TButton", foreground='green3', background='red')
+ttk_btn = ttk.Button(text="QUIT", width=12, style="RB.TButton", command = quit)
+ttk_btn.pack(pady=20, side = 'bottom')
+
+
+root.mainloop()
